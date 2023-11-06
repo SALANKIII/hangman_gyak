@@ -4,5 +4,8 @@ import 'package:hangman/views/game_view.dart';
 import 'package:hangman/views/home_view.dart';
 
 void main() {
-  runApp(GetMaterialApp(home: HomeView()));
+  runApp(GetMaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: HomeView(),
+  ));
 }
