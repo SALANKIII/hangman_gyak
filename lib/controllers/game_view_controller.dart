@@ -6,22 +6,35 @@ import 'package:hangman/views/end_view.dart';
 
 class GameViewController extends GetxController {
   List<String> szovegek = [
-    "alma piros",
+    "az alma piros",
     "az ég kék",
+    "a fű zöld",
     "gurul a szekér",
+    "hatalmas",
+    "melléknév",
+    "kecskegida",
+    "repülő",
+    "autómotor",
+    "ügyes vagy",
+    "te vagy a legszebb",
+    "majdnem eltalaltad",
+    "halványlila",
+    "kereskedelem",
+    "kereszteződés",
   ];
 
   String randomSzoveg = ""; //alma
 
   String csillagosSzoveg = ""; //****
 
-  void randomSzovegGeneralasa() {
+  void init() {
     int index = Random().nextInt(szovegek.length); //]0,szoveghossz];
     randomSzoveg = szovegek[index];
     csillagosSzoveg = "";
     for (int i = 0; i < randomSzoveg.length; i++) {
       csillagosSzoveg += "*";
     }
+    tippek=[];
     update();
   }
 
@@ -31,6 +44,7 @@ class GameViewController extends GetxController {
     return csillagosSzoveg == randomSzoveg;
   }
 
+  // game over
   bool vesztettEaFelhasznalo() {
     int szamlalo = 0;
     for (int i = 0; i < tippek.length; i++) {
@@ -67,34 +81,33 @@ class GameViewController extends GetxController {
 
   void tippHozzaadasa(String betu) {
     if (randomSzoveg.toLowerCase().contains(betu.toLowerCase())) {
-      List<String> csillagosSzovegTemp = csillagosSzoveg.split((''));
+      // [*,*,*] ***
+      List<String> csillagosSzovegTemp = csillagosSzoveg.split('');
       for (int i = 0; i < randomSzoveg.length; i++) {
-        if (randomSzoveg[i] == betu) {
-          csillagosSzovegTemp[i] == betu;
+        if (randomSzoveg[i].toLowerCase() == betu.toLowerCase()) {
+          csillagosSzovegTemp[i] = randomSzoveg[i];
         }
       }
       csillagosSzoveg = csillagosSzovegTemp.join();
-      tippek.add(
-        Tipp(
-          karakter: betu,
-          talaltE: true,
-        ),
-      );
+
+      // jó tipp
+      tippek.add(Tipp(
+        karakter: betu,
+        talaltE: true,
+      ));
       update();
       if (nyertEaFelhasznalo()) {
         Get.to(EndView("Gratulálok! Nyertél!", hibakSzama()));
       }
     } else {
-      //rosz tipp
-      tippek.add(
-        Tipp(
-          karakter: betu,
-          talaltE: false,
-        ),
-      );
+      // rossz tipp
+      tippek.add(Tipp(
+        karakter: betu,
+        talaltE: false,
+      ));
       update();
-      if (nyertEaFelhasznalo()) {
-        Get.to(EndView("Sajnos vesztettél! Amire gondoltam:${randomSzoveg}",
+      if (vesztettEaFelhasznalo()) {
+        Get.to(EndView("Sajnos vesztettél! Amire gondoltam: ${randomSzoveg} ",
             hibakSzama()));
       }
     }
@@ -104,6 +117,6 @@ class GameViewController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    randomSzovegGeneralasa();
+    init();
   }
 }
