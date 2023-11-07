@@ -12,7 +12,8 @@ class GameView extends StatelessWidget {
     return GetBuilder<GameViewController>(
       init: controller,
       builder: (_) {
-        return Scaffold(
+        return (!controller.TheInitIsDone)?Center(child: CircularProgressIndicator(),):Scaffold(
+          backgroundColor: Color.fromARGB(82, 244, 67, 54),
           appBar: AppBar(
             backgroundColor: Color.fromARGB(255, 255, 0, 85),
             title: Text("Hangman"),

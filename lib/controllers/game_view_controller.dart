@@ -145,25 +145,25 @@ BuildContext context;
       }
     }
   }
-  void kepekLetarolasaCacheMemoriba()async{
-    await precacheImage(AssetImage('0.png'), context);
-    await precacheImage(AssetImage('1.png'), context);
-    await precacheImage(AssetImage('2.png'), context);
-    await precacheImage(AssetImage('3.png'), context);
-    await precacheImage(AssetImage('4.png'), context);
-    await precacheImage(AssetImage('5.png'), context);
-    await precacheImage(AssetImage('6.png'), context);
-    await precacheImage(AssetImage('celebrate.png'), context);
+  Future kepekLetarolasaCacheMemoriba()async{
+    await precacheImage(AssetImage('images/0.png'), context);
+    await precacheImage(AssetImage('images/1.png'), context);
+    await precacheImage(AssetImage('images/2.png'), context);
+    await precacheImage(AssetImage('images/3.png'), context);
+    await precacheImage(AssetImage('images/4.png'), context);
+    await precacheImage(AssetImage('images/5.png'), context);
+    await precacheImage(AssetImage('images/6.png'), context);
+    await precacheImage(AssetImage('images/celebrate.png'), context);
 
   }
 
  
 
   @override
-  void onInit() {
+  void onInit() async{
     // TODO: implement onInit
     super.onInit();
-    kepekLetarolasaCacheMemoriba();
+    await kepekLetarolasaCacheMemoriba();
     init();
     TheInitIsDone = true;
   }
