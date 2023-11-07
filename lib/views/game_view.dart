@@ -6,23 +6,25 @@ import 'package:hangman/views/widgets/letter_button.dart';
 import 'package:hangman/views/widgets/letter_holder.dart';
 
 class GameView extends StatelessWidget {
-  GameViewController controller = Get.put(GameViewController());
-
   @override
   Widget build(BuildContext context) {
+    GameViewController controller = Get.put(GameViewController(context));
     return GetBuilder<GameViewController>(
       init: controller,
       builder: (_) {
         return Scaffold(
           appBar: AppBar(
+            backgroundColor: Color.fromARGB(255, 255, 0, 85),
             title: Text("Hangman"),
           ),
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset("images/${controller.hibakSzama()}.png"),
-
-              Text(controller.csillagosSzoveg, style: TextStyle(fontSize: 25),),
+              Text(
+                controller.csillagosSzoveg,
+                style: TextStyle(fontSize: 25),
+              ),
               Column(
                 children: [
                   LetterHolder(
@@ -49,7 +51,6 @@ class GameView extends StatelessWidget {
                     letters: ["V", "W", "X", "Y", "Z", " "],
                     controller: controller,
                   ),
-                  
                 ],
               )
             ],
@@ -59,5 +60,3 @@ class GameView extends StatelessWidget {
     );
   }
 }
-
-

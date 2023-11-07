@@ -1,10 +1,15 @@
 // játék logika
+import 'dart:js';
 import 'dart:math';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:hangman/models/tipp.dart';
 import 'package:hangman/views/end_view.dart';
 
 class GameViewController extends GetxController {
+  GameViewController(this.context);
+BuildContext context;
+
   List<String> szovegek = [
     "az alma piros",
     "az ég kék",
@@ -52,7 +57,7 @@ class GameViewController extends GetxController {
   ];
 
   String randomSzoveg = ""; //alma
-
+   bool TheInitIsDone = false;
   String csillagosSzoveg = ""; //****
 
   void init() {
@@ -140,11 +145,26 @@ class GameViewController extends GetxController {
       }
     }
   }
+  void kepekLetarolasaCacheMemoriba()async{
+    await precacheImage(AssetImage('0.png'), context);
+    await precacheImage(AssetImage('1.png'), context);
+    await precacheImage(AssetImage('2.png'), context);
+    await precacheImage(AssetImage('3.png'), context);
+    await precacheImage(AssetImage('4.png'), context);
+    await precacheImage(AssetImage('5.png'), context);
+    await precacheImage(AssetImage('6.png'), context);
+    await precacheImage(AssetImage('celebrate.png'), context);
+
+  }
+
+ 
 
   @override
   void onInit() {
     // TODO: implement onInit
     super.onInit();
+    kepekLetarolasaCacheMemoriba();
     init();
+    TheInitIsDone = true;
   }
 }

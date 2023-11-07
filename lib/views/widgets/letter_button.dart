@@ -12,7 +12,8 @@ class LetterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoButton.filled(
+    return CupertinoButton(
+      color: Color.fromARGB(255, 255, 0, 85),
       padding: EdgeInsets.zero,
       child: Text(letter),
       onPressed: (controller.aMegadottBetuVoltEmar(letter))

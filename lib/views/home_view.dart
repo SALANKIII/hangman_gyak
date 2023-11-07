@@ -7,9 +7,12 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Hangman")),
+      appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 255, 0, 85),
+          title: Text("Hangman")),
       body: Center(
-          child: CupertinoButton.filled(
+          child: CupertinoButton(
+        color: Color.fromARGB(255, 255, 0, 85),
         child: Text("Start game"),
         onPressed: () {
           Get.to(
