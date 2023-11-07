@@ -16,7 +16,7 @@ class GameView extends StatelessWidget {
           backgroundColor: Color.fromARGB(82, 244, 67, 54),
           appBar: AppBar(
             backgroundColor: Color.fromARGB(255, 255, 0, 85),
-            title: Text("Hangman"),
+            title: Center(child: Text("Hangman")),
           ),
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
