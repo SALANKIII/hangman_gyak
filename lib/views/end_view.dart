@@ -20,30 +20,39 @@ class EndView extends StatelessWidget {
           return Stack(
             children: [
               Scaffold(
-                body: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      (index < 6)
-                          ? Image.asset(
-                              "images/celebrate.png",
-                              width: 200,
-                            )
-                          : Image.asset("images/$index.png"),
-                      Text(
-                        uzenet,
-                        style: TextStyle(fontSize: 30),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      CupertinoButton.filled(
-                        child: Text("Vissza a kezdőlapra"),
-                        onPressed: () {
-                          Get.offAll(HomeView());
-                        },
-                      )
-                    ],
+                body: Container(
+                   width: double.infinity,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("images/minimal.jpg"),
+                    fit: BoxFit.cover),
+              ),
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        (index < 6)
+                            ? Image.asset(
+                                "images/celebrate.png",
+                                width: 200,
+                              )
+                            : Image.asset("images/$index.png"),
+                        Text(
+                          uzenet,
+                          style: TextStyle(fontSize: 30),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        CupertinoButton(
+                          color: Color.fromARGB(255, 98, 146, 158),
+                          child: Text("Vissza a kezdőlapra"),
+                          onPressed: () {
+                            Get.offAll(HomeView());
+                          },
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),

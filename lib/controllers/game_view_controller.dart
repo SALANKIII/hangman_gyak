@@ -8,7 +8,7 @@ import 'package:hangman/views/end_view.dart';
 
 class GameViewController extends GetxController {
   GameViewController(this.context);
-BuildContext context;
+  BuildContext context;
 
   List<String> szovegek = [
     "az alma piros",
@@ -57,7 +57,7 @@ BuildContext context;
   ];
 
   String randomSzoveg = ""; //alma
-   bool TheInitIsDone = false;
+  bool TheInitIsDone = false;
   String csillagosSzoveg = ""; //****
 
   void init() {
@@ -67,7 +67,7 @@ BuildContext context;
     for (int i = 0; i < randomSzoveg.length; i++) {
       csillagosSzoveg += "*";
     }
-    tippek=[];
+    tippek = [];
     update();
   }
 
@@ -145,7 +145,8 @@ BuildContext context;
       }
     }
   }
-  Future kepekLetarolasaCacheMemoriba()async{
+
+  Future kepekLetarolasaCacheMemoriba() async {
     await precacheImage(AssetImage('images/0.png'), context);
     await precacheImage(AssetImage('images/1.png'), context);
     await precacheImage(AssetImage('images/2.png'), context);
@@ -154,13 +155,11 @@ BuildContext context;
     await precacheImage(AssetImage('images/5.png'), context);
     await precacheImage(AssetImage('images/6.png'), context);
     await precacheImage(AssetImage('images/celebrate.png'), context);
-
+    await precacheImage(AssetImage('images/minimal.jpg'), context);
   }
 
- 
-
   @override
-  void onInit() async{
+  void onInit() async {
     // TODO: implement onInit
     super.onInit();
     await kepekLetarolasaCacheMemoriba();
