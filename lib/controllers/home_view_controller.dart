@@ -12,11 +12,45 @@ class HomeViewController extends GetxController {
     if (firstname.text != "" && lastname.text != "" && school.text != "") {
       Get.to(GameView(), transition: Transition.cupertino);
     } else if (firstname.text == "") {
-      Get.showSnackbar(GetSnackBar(message: "nem adtad meg a keresztneved"));
+      Get.dialog(CupertinoAlertDialog(
+        title: Text("Hiba"),
+        content: Text("Nem adtad meg a keresztneved"),
+        actions: [
+          CupertinoDialogAction(
+            child: Text("ok"),
+            onPressed: () {
+              Get.back();
+            },
+          )
+        ],
+      ));
+      
     } else if (lastname.text == "") {
-      Get.showSnackbar(GetSnackBar(message: "nem adtad meg a keresztneved"));
+      Get.dialog(CupertinoAlertDialog(
+        title: Text("Hiba"),
+        content: Text("Nem adtad meg a vezetékneved"),
+        actions: [
+          CupertinoDialogAction(
+            child: Text("ok"),
+            onPressed: () {
+              Get.back();
+            },
+          )
+        ],
+      ));
     } else {
-      Get.showSnackbar(GetSnackBar(message: "nem adtad meg a keresztneved"));
+      Get.dialog(CupertinoAlertDialog(
+        title: Text("Hiba"),
+        content: Text("Nem adtad meg az iskolád"),
+        actions: [
+          CupertinoDialogAction(
+            child: Text("ok"),
+            onPressed: () {
+              Get.back();
+            },
+          )
+        ],
+      ));
     }
   }
 }
